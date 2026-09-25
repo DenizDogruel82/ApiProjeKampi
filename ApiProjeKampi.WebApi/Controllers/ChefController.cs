@@ -1,0 +1,57 @@
+﻿using ApiProjeKampi.WebApi.Context;
+using ApiProjeKampi.WebApi.Entities;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ApiProjeKampi.WebApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ChefController : ControllerBase
+    {
+        private readonly ApiContext _context;
+
+        public ChefController(ApiContext context)
+        {
+            _context = context;
+        }
+        [HttpGet]
+        public IActionResult ChefList()
+        {
+            var value = _context.Chefs.ToList();
+            return Ok(value);
+        }
+        [HttpPost]
+        public IActionResult CreateChef(Chef chef)
+        {
+            _context.Chefs.Add(chef);
+            _context.SaveChanges();
+            return Ok("Ekleme başarılı!");
+        }
+        [HttpDelete]
+        public IActionResult DeleteChef(int id)
+        {
+            var values=_context.Chefs.Find(id);
+            _context.Chefs.Remove(values);
+            _context.SaveChanges();
+            return Ok("Silme işlemi başarıyla gerçekleşti");
+
+        }
+        [HttpPut]
+        public IActionResult UpdateChefs(Chef chef) { 
+              _context.Chefs.Update(chef);
+              _context.SaveChanges();
+            return Ok("Güncelleme işlemi başarılı!");
+
+
+        
+        }
+        [HttpGet("GetChef")]
+        public IActionResult GetChef(int id) {
+
+            return Ok(_context.Chefs.Find(id));
+        
+        }
+
+    }
+}
