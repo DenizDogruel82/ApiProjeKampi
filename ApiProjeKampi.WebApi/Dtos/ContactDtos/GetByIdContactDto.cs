@@ -1,8 +1,8 @@
-﻿namespace ApiProjeKampi.WebApi.Dtos
+﻿namespace ApiProjeKampi.WebApi.Dtos.ContactDtos
 {
-    public class CreateContactDto
-
+    public class GetByIdContactDto
     {
+        public int ContactId { get; set; }
         public string MapLocation { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }

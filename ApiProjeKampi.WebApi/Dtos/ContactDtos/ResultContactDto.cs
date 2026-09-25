@@ -1,4 +1,4 @@
-﻿namespace ApiProjeKampi.WebApi.Dtos
+﻿namespace ApiProjeKampi.WebApi.Dtos.ContactDtos
 {
     public class ResultContactDto
     {
